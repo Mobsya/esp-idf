@@ -13,6 +13,7 @@ endif()
 set(COMPONENTS bootloader esptool_py esp32 soc bootloader_support log spi_flash micro-ecc soc)
 set(BOOTLOADER_BUILD 1)
 add_definitions(-DBOOTLOADER_BUILD=1)
+add_definitions(-DCONFIG_PARTITION_TABLE_OFFSET=0x8000)
 
 set(COMPONENT_REQUIRES_COMMON log esp32 soc)
 
