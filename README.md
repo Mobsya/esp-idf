@@ -1,6 +1,6 @@
 # Espressif IoT Development Framework
 
-[![alt text](https://readthedocs.org/projects/docs/badge/?version=latest "Documentation Status")](https://esp-idf.readthedocs.io/en/latest/?badge=latest)
+[![alt text](https://readthedocs.org/projects/docs/badge/?version=latest "Documentation Status")](https://docs.espressif.com/projects/esp-idf/en/latest/?badge=latest)
 
 ESP-IDF is the official development framework for the [ESP32](https://espressif.com/en/products/hardware/esp32/overview) chip.
 
@@ -10,9 +10,9 @@ ESP-IDF is the official development framework for the [ESP32](https://espressif.
 
 See setup guides for detailed instructions to set up the ESP-IDF:
 
-* [Windows Setup Guide](https://esp-idf.readthedocs.io/en/latest/get-started/windows-setup.html)
-* [Mac OS Setup Guide](https://esp-idf.readthedocs.io/en/latest/get-started/macos-setup.html)
-* [Linux Setup Guide](https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html)
+* [Windows Setup Guide](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/windows-setup.html)
+* [Mac OS Setup Guide](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/macos-setup.html)
+* [Linux Setup Guide](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/linux-setup.html)
 
 ## Finding a Project
 
@@ -96,12 +96,12 @@ This can be combined with other targets, ie `idf.py erase_flash flash` will eras
 
 # Resources
 
-* Documentation for the latest version: https://esp-idf.readthedocs.io/. This documentation is built from the [docs directory](docs) of this repository.
+* Documentation for the latest version: https://docs.espressif.com/projects/esp-idf/. This documentation is built from the [docs directory](docs) of this repository.
 
 * The [esp32.com forum](https://esp32.com/) is a place to ask questions and find community resources.
 
 * [Check the Issues section on github](https://github.com/espressif/esp-idf/issues) if you find a bug or have a feature request. Please check existing Issues before opening a new one.
 
-* If you're interested in contributing to ESP-IDF, please check the [Contributions Guide](https://esp-idf.readthedocs.io/en/latest/contribute/index.html).
+* If you're interested in contributing to ESP-IDF, please check the [Contributions Guide](https://docs.espressif.com/projects/esp-idf/en/latest/contribute/index.html).
 
 
