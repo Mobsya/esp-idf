@@ -19,7 +19,7 @@ variables:
   GET_SOURCES_ATTEMPTS: "10"
   ARTIFACT_DOWNLOAD_ATTEMPTS: "10"
 
-  # We use get_sources.sh script to fetch the submodules and/or re-fetch the repo
+  # We use get-full-sources.sh script to fetch the submodules and/or re-fetch the repo
   # if it was corrupted (if submodule update fails this can happen)
   GIT_STRATEGY: fetch
   GIT_SUBMODULE_STRATEGY: none
@@ -903,7 +903,7 @@ assign_test:
     LOG_PATH: "$CI_PROJECT_DIR/$CI_COMMIT_SHA"
     TEST_CASE_FILE_PATH: "$CI_PROJECT_DIR/components/idf_test/integration_test"
     MODULE_UPDATE_FILE: "$CI_PROJECT_DIR/components/idf_test/ModuleDefinition.yml"
-    CONFIG_FILE: "$CI_PROJECT_DIR/components/idf_test/integration_test/CIConfigs/$CI_JOB_NAME.yml"
+    CONFIG_FILE: "$CI_PROJECT_DIR/components/idf_test/integration_test/CIConfigs/${CI_JOB_NAME}_.yml"
   before_script: *add_gitlab_key_before
   script:
     # first test if config file exists, if not exist, exit 0
@@ -1232,6 +1232,12 @@ UT_001_40:
     - UT_T1_1
 
 UT_001_41:
+  <<: *unit_test_template
+  tags:
+    - ESP32_IDF
+    - UT_T1_1
+
+UT_001_42:
   <<: *unit_test_template
   tags:
     - ESP32_IDF
@@ -1787,6 +1793,24 @@ IT_009_01:
     - SSC_T1_3
 
 IT_010_01:
+  <<: *test_template
+  tags:
+    - ESP32_IDF
+    - SSC_T5_1
+
+IT_010_02:
+  <<: *test_template
+  tags:
+    - ESP32_IDF
+    - SSC_T5_1
+
+IT_010_03:
+  <<: *test_template
+  tags:
+    - ESP32_IDF
+    - SSC_T5_1
+
+IT_010_04:
   <<: *test_template
   tags:
     - ESP32_IDF
