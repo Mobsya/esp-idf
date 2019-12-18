@@ -405,22 +405,22 @@ static int get_time_wrapper(void *t)
 
 static void * IRAM_ATTR malloc_internal_wrapper(size_t size)
 {
-    return heap_caps_malloc(size, MALLOC_CAP_DEFAULT|MALLOC_CAP_INTERNAL);
+    return heap_caps_malloc(size, MALLOC_CAP_8BIT|MALLOC_CAP_DMA|MALLOC_CAP_INTERNAL);
 }
 
 static void * IRAM_ATTR realloc_internal_wrapper(void *ptr, size_t size)
 {
-    return heap_caps_realloc(ptr, size, MALLOC_CAP_DEFAULT|MALLOC_CAP_INTERNAL);
+    return heap_caps_realloc(ptr, size, MALLOC_CAP_8BIT|MALLOC_CAP_DMA|MALLOC_CAP_INTERNAL);
 }
 
 static void * IRAM_ATTR calloc_internal_wrapper(size_t n, size_t size)
 {
-    return heap_caps_calloc(n, size, MALLOC_CAP_DEFAULT|MALLOC_CAP_INTERNAL);
+    return heap_caps_calloc(n, size, MALLOC_CAP_8BIT|MALLOC_CAP_DMA|MALLOC_CAP_INTERNAL);
 }
 
 static void * IRAM_ATTR zalloc_internal_wrapper(size_t size)
 {
-    void *ptr = heap_caps_calloc(1, size, MALLOC_CAP_DEFAULT|MALLOC_CAP_INTERNAL);
+    void *ptr = heap_caps_calloc(1, size, MALLOC_CAP_8BIT|MALLOC_CAP_DMA|MALLOC_CAP_INTERNAL);
     if (ptr) {
         memset(ptr, 0, size);
     }
@@ -438,6 +438,13 @@ static uint32_t coex_status_get_wrapper(void)
     return coex_status_get();
 #else
     return 0;
+#endif
+}
+
+static void coex_condition_set_wrapper(uint32_t type, bool dissatisfy)
+{
+#if CONFIG_SW_COEXIST_ENABLE
+    coex_condition_set(type, dissatisfy);
 #endif
 }
 
@@ -593,6 +600,7 @@ wifi_osi_funcs_t g_wifi_osi_funcs = {
     ._sc_ack_send = sc_ack_send_wrapper,
     ._sc_ack_send_stop = sc_ack_send_stop,
     ._coex_status_get = coex_status_get_wrapper,
+    ._coex_condition_set = coex_condition_set_wrapper,
     ._coex_wifi_request = coex_wifi_request_wrapper,
     ._coex_wifi_release = coex_wifi_release_wrapper,
     ._magic = ESP_WIFI_OS_ADAPTER_MAGIC,
