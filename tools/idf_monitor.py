@@ -220,8 +220,10 @@ class SerialReader(StoppableThread):
         if not self.serial.is_open:
             self.serial.baudrate = self.baud
             self.serial.rts = True  # Force an RTS reset on open
+            self.serial.dtr = False # Added by VGO
             self.serial.open()
             self.serial.rts = False
+            self.serial.dtr = False # Added by VGO
         try:
             while self.alive:
                 data = self.serial.read(self.serial.in_waiting or 1)
@@ -469,8 +471,10 @@ class Monitor(object):
             red_print(self.get_help_text())
         elif c == CTRL_R:  # Reset device via RTS
             self.serial.setRTS(True)
+            self.serial.setDTR(False)  # Added by VGO
             time.sleep(0.2)
             self.serial.setRTS(False)
+            self.serial.setDTR(False)  # Added by VGO
             self.output_enable(True)
         elif c == CTRL_F:  # Recompile & upload
             self.run_make("flash")
